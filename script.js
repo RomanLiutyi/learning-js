@@ -1,18 +1,23 @@
-var alphabet  = 'abcdefghijklmnopqrstuvwxyz';
-var resultWords = {}; 
-
-do{
-    var randCoins  = +prompt('Какое количество рандомных слов нужно создать ' , 20);
-    var minLetter  = +prompt('Какое минимальное количество букв в слове должно быть ', 2);
-    var maxLetter  = +prompt('Какое максимальное количество букв в слове должно быть ', 10);
-    var test       = (randCoins > 0) && (minLetter > 0 )&& (maxLetter > 0);
-} while (!test)
-
-for (var index = randCoins; index > 0; index--) {
-    var newWord = '';
-    for (var letterIteration = randomaizer(maxLetter, minLetter); letterIteration > 0; letterIteration--) {
-        newWord += alphabet[randomaizer(alphabet.length - 1)];
-    }(!resultWords[newWord.length]) ? resultWords[newWord.length] = [newWord] : resultWords[newWord.length].push(newWord);     
+function exchange(from, to){
+    var object = {usd: 26.5, euro: 30, uah: 1}; 
+    for (var key in object) {
+        if (key === from) {
+            fromValue = object[key];}
+        if (key === to) {
+            toValue = object[key];} 
+    }return (object[from]/object[to]);
 }
-infoObject(resultWords);
-console.log(resultWords);
+var from = 'usd',
+      to = 'euro';
+var input = 500 , 
+    output  = (input * exchange(from, to)).toFixed(2);
+ console.log(input + ' ' + from +' = ' + output + ' ' + to);
+
+
+function deposit(sum , rate , years){
+    for (var index = years; index > 0; index--) {
+        sum += (sum * rate /100);
+    }
+    return sum.toFixed(2)
+}
+console.log(deposit(10000, 12, 15));
